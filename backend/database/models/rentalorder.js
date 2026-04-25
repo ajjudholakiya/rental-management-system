@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      tableName: 'rental_orders',
+      tableName: 'rentalorders',
       freezeTableName: true,
       timestamps: true
     }

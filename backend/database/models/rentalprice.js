@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       pricePerWeek: DataTypes.DECIMAL
     },
     {
-      tableName: 'rental_prices',
+      tableName: 'rentalprices',
       freezeTableName: true,
       timestamps: true
     }

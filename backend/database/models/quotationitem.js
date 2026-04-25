@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       quantity: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 1 }
     },
     {
-      tableName: 'quotation_items',
+      tableName: 'quotationitems',
       freezeTableName: true,
       timestamps: true
     }

@@ -1,24 +1,28 @@
 module.exports = (sequelize, DataTypes) => {
-  const Quotation = sequelize.define('Quotation', {
-    customerId: DataTypes.INTEGER,
-    status: DataTypes.STRING,
-    totalAmount: DataTypes.DECIMAL
-  });
+  const Quotation = sequelize.define(
+    'Quotation',
+    {
+      customerId: DataTypes.INTEGER,
+      status: DataTypes.STRING,
+      totalAmount: DataTypes.DECIMAL
+    },
+    {
+      tableName: 'quotations',
+      freezeTableName: true,
+      timestamps: true
+    }
+  );
 
   Quotation.associate = (models) => {
     Quotation.belongsTo(models.User, {
       foreignKey: 'customerId',
       as: 'customer'
     });
-
     Quotation.hasMany(models.QuotationItem, {
       foreignKey: 'quotationId',
       as: 'items'
     });
-
-    Quotation.hasOne(models.RentalOrder, {
-      foreignKey: 'quotationId'
-    });
+    Quotation.hasOne(models.RentalOrder, { foreignKey: 'quotationId' });
   };
 
   return Quotation;

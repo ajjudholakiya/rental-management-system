@@ -1,15 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-  const Payment = sequelize.define('Payment', {
-    invoiceId: DataTypes.INTEGER,
-    amount: DataTypes.DECIMAL,
-    paymentMethod: DataTypes.STRING,
-    status: DataTypes.STRING
-  });
+  const Payment = sequelize.define(
+    'Payment',
+    {
+      invoiceId: DataTypes.INTEGER,
+      amount: DataTypes.DECIMAL,
+      paymentMethod: DataTypes.STRING,
+      status: DataTypes.STRING
+    },
+    {
+      tableName: 'payments',
+      freezeTableName: true,
+      timestamps: true
+    }
+  );
 
   Payment.associate = (models) => {
-    Payment.belongsTo(models.Invoice, {
-      foreignKey: 'invoiceId'
-    });
+    Payment.belongsTo(models.Invoice, { foreignKey: 'invoiceId' });
   };
 
   return Payment;
